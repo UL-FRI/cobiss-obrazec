@@ -29,20 +29,15 @@ function cobiss()
          var priloge="Priloga: "
          var datum = new Date();
          var date="Datum: "+datum.getDate() + ". "+ (datum.getMonth()+1) + ". " + datum.getFullYear()
-          
          
            if (document.getElementById("fotokopija").checked){
-
               var fotokopija=document.getElementById("fotokopija").value
              priloge=priloge+", "+fotokopija
            }
             if (document.getElementById("dokazila").checked){
-
               var dokazila=document.getElementById("dokazila").value
              priloge=priloge+", "+dokazila
            }
-
-
 
         var docDefinition = {
    content: [// using a { text: '...' } object lets you set styling properties
@@ -52,130 +47,75 @@ function cobiss()
      // to style any fragment individually
      {
        text:  avtor1,fontSize:12
-         
-       
      },
-
       {
        text: '\n\n',fontSize:12
-         
-       
      },
-   
-
       { text: 'Spremni list o dokumentu/delu za vodenje bibliografij raziskovalcev v sistemu COBISS', fontSize:15, bold:true },
-
         {
        text: '\n\n',fontSize:12
-         
-       
      },
-
        {
        text: 'Tipologija dokumenta/dela:\n',fontSize:12
-         
-       
      },
-      
       {
        text: tipologija, fontSize:12
-         
-       
      },
       {
        text: '\n\n',fontSize:12
-         
-       
      },
        {
        text: 'Za prispevke, ki so objavljeni v zborniku:\n',fontSize:12
-         
-       
      },
-
       {
        text: prispevki, fontSize:12
-         
-       
      },
        {
        text: '\n\n',fontSize:12
-         
-       
      },
-     
       {
        text: 'Naslov dela/dokumenta:\n',fontSize:12
-         
-       
      },
       {
        text: delo, fontSize:12
-         
-       
      },
        {
        text: '\n\n',fontSize:12
-         
-       
      },
        {
        text: 'Priimek in imena:avtorja in soavtorja:\n',fontSize:12
-         
-       
      },
       {
        text: avtorji, fontSize:12
-         
-       
      },
        {
        text: '\n\n',fontSize:12
-         
-       
      },
       {
        text: 'Ključne besede v slovenkem jeziku:\n',fontSize:12
-         
-       
      },
       {
        text: slo, fontSize:12
-         
-       
      },
        {
        text: '\n\n',fontSize:12
-         
-       
      },
       {
        text: 'Ključne besede v angleškem jeziku:\n',fontSize:12
-         
-       
      },
       eng, 
        {
        text: '\n\n',fontSize:12
-         
-       
      },
       {
        text: 'Vir:\n',fontSize:12
-         
-       
      },
       {
        text: vir,fontSize:12
-         
-       
      },/*,
        {
        text: '\n\n',fontSize:12
-         
-       
      },
-
     /*  { text: 'Priloge', style: 'header' },
         {
             ol: [
@@ -186,35 +126,26 @@ function cobiss()
         },*/
           {
        text: '\n\n',fontSize:12
-         
-       
      },
       {
        text: priloge, fontSize:12
-         
-       
      },   
     {
        text: '\n\n',fontSize:12
-         
-       
      },
       {
        text: date,fontSize:12
-         
-       
      }
    ]
  };
+
   // pdfMake.createPdf(docDefinition).open();
- 
 
  // print the PDF (temporarily Chrome-only)
 //pdfMake.createPdf(docDefinition).print();
 
  // download the PDF (temporarily Chrome-only)
 pdfMake.createPdf(docDefinition).download('cobiss-obrazec.pdf');
-
 }
 </script>
 
@@ -228,7 +159,6 @@ pdfMake.createPdf(docDefinition).download('cobiss-obrazec.pdf');
         	<label for="ime">Predlagatelj dokumenta/dela(avtor oz. soavtor)</label>
         	<input name="ime" id="avtor" type="text" placeholder="Predlagatelj dokumenta">
         </div>	
-       
          
        <div class="pure-control-group">
         <label for="posta">Tipologija dokumenta/dela</label>
