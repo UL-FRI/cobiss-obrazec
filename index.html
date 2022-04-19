@@ -4,8 +4,6 @@
 
 <title>Vodenje bibliografij v sistemu COBISS</title>
 
-<link rel="stylesheet" href="css/pure-min.css" />
-
 <script src='js/pdfmake.min.js'></script>
 <script src='js/vfs_fonts.js'></script>
     
@@ -77,132 +75,140 @@ body {
     max-width: 66em;
     padding: 1em 2em;
 }
+fieldset {
+    margin-bottom: 1em;
+}
+legend {
+    font-weight: bold;
+}
+p:first-of-type {
+    margin-top: 0;
+}
+p:last-of-type {
+    margin-bottom: 0;
+}
+textarea {
+    font-family: "sans-serif";
+    width: 90%;
+}
 </style>
 
-<form class="pure-form pure-form-aligned">
+<form>
     <fieldset>
-        <legend><b>Spremni list o dokumentu/delu za vodenje bibliografij raziskovalcev v sistemu COBISS</b></legend>
+        <legend>Spremni list o dokumentu/delu za vodenje bibliografij raziskovalcev v sistemu COBISS</legend>
 
-        <div class="pure-control-group">
-            <label for="avtor">Predlagatelj dokumenta/dela (avtor oz. soavtor)</label>
-            <input id="avtor" type="text" placeholder="Predlagatelj dokumenta">
-        </div>
+        <p>
+        <label for="avtor">Predlagatelj dokumenta/dela (avtor oz. soavtor)</label><br>
+        <input id="avtor" type="text" placeholder="Predlagatelj dokumenta">
 
-        <div class="pure-control-group">
-            <label for="tipologija">Tipologija dokumenta/dela</label>
-            <select id="tipologija">
-                <option>1.01 Izvirni znanstveni članek
-                <option>1.02 Pregledni znanstveni članek
-                <option>1.03 Kratki znanstveni prispevek
-                <option>1.04 Strokovni članek
-                <option>1.05 Poljudni članek
-                <option>1.06 Objavljeni znanstveni prispevek na konferenci (vabljeno predavanje)
-                <option>1.07 Objavljeni strokovni prispevek na konferenci (vabljeno predavanje)
-                <option>1.08 Objavljeni znanstveni prispevek na konferenci
-                <option>1.09 Objavljeni strokovni prispevek na konferenci
-                <option>1.10 Objavljeni povzetek znanstvenega prispevka na konferenci (vabljeno predavanje)
-                <option>1.11 Objavljeni povzetek strokovnega prispevka na konferenci (vabljeno predavanje)
-                <option>1.12 Objavljeni povzetek znanstvenega prispevka na konferenci
-                <option>1.13 Objavljeni povzetek strokovnega prispevka na konferenci)
-                 
-                <option>1.16 Samostojni znanstveni sestavek ali poglavje v monografski publikaciji
-                <option>1.17 Samostojni strokovni sestavek ali poglavje v monografski publikaciji
-                <option>1.18 Strokovni sestavek v slovarju, enciklopediji ali leksikonu
-                <option>1.19 Recenzija, prikaz knjige, kritika
-                <option>1.20 Predgovor, spremna beseda
-                <option>1.21 Polemika, diskusijski prispevek, komentar
-                <option>1.22 Intervju
-                <option>1.23 Umetniški sestaveki
-                <option>1.24 Bibliografija, kazalo ipd.
-                <option>1.25 Drugi sestavni deli
-                <option>1.26 Znanstveni sestavek v slovarju, enciklopediji, leksikonu
+        <p>
+        <label for="tipologija">Tipologija dokumenta/dela</label><br>
+        <select id="tipologija">
+            <option>1.01 Izvirni znanstveni članek
+            <option>1.02 Pregledni znanstveni članek
+            <option>1.03 Kratki znanstveni prispevek
+            <option>1.04 Strokovni članek
+            <option>1.05 Poljudni članek
+            <option>1.06 Objavljeni znanstveni prispevek na konferenci (vabljeno predavanje)
+            <option>1.07 Objavljeni strokovni prispevek na konferenci (vabljeno predavanje)
+            <option>1.08 Objavljeni znanstveni prispevek na konferenci
+            <option>1.09 Objavljeni strokovni prispevek na konferenci
+            <option>1.10 Objavljeni povzetek znanstvenega prispevka na konferenci (vabljeno predavanje)
+            <option>1.11 Objavljeni povzetek strokovnega prispevka na konferenci (vabljeno predavanje)
+            <option>1.12 Objavljeni povzetek znanstvenega prispevka na konferenci
+            <option>1.13 Objavljeni povzetek strokovnega prispevka na konferenci)
 
-                <option>2.01 Znanstvena monografija
-                <option>2.02 Strokovna monografija
-                <option>2.03 Univerzitetni, visokošolski ali višješolski učbenik z recenzijo
-                <option>2.04 Srednješolski, osnovnošolski ali drugi učbenik z recenzijo
-                <option>2.05 Drugo učno gradivo
-                <option>2.06 Slovar, enciklopedija, leksikon, priročnik, atlas, zemljevid
-                <option>2.07 Bibliografija
-                <option>2.08 Doktorska disertacija
-                <option>2.09 Magistrsko delo
-                <option>2.10 Specialistično delo
-                <option>2.11 Diplomsko delo
-                <option>2.12 Končno poročilo o rezultatih raziskav
-                <option>2.13 Elaborat, predštudija, študija
-                <option>2.14 Projektna dokumentacija (idejni projekt, izvedbeni projekt)
-                <option>2.15 Izvedensko mnenje, arbitražna odločba
-                <option>2.16 Umetniško delo
-                <option>2.17 Katalog razstave
-                <option>2.18 Raziskovalni ali dokumentarni film, zvočna ali video publikacija
-                <option>2.19 Radijska ali televizijska oddaja
-                <option>2.20 Zaključena znanstvena zbirka podatkov ali korpus
-                <option>2.21 Programska oprema
-                <option>2.22 Nova sorta
-                <option>2.23 Patentna prijava
-                <option>2.24 Patent
-                <option>2.25 Druge monografije in druga zaključena dela
-                <option>2.26 Temeljni znanstveni slovar ali leksikon
-                <option>2.27 Znanstveni terminološki slovar, enciklopedija ali tematski leksikon
-                <option>2.28 Znanstvenokritična izdaja vira
-                <option>2.29 Model
-                <option>2.30 Zbornik strokovnih ali nerecenziranih znanstvenih prispevkov na konferenci
-                <option>2.31 Zbornik recenziranih znanstvenih prispevkov na mednarodni ali tuji konferenci
-                <option>2.32 Zbornik recenziranih znanstvenih prispevkov na domači konferenci
+            <option>1.16 Samostojni znanstveni sestavek ali poglavje v monografski publikaciji
+            <option>1.17 Samostojni strokovni sestavek ali poglavje v monografski publikaciji
+            <option>1.18 Strokovni sestavek v slovarju, enciklopediji ali leksikonu
+            <option>1.19 Recenzija, prikaz knjige, kritika
+            <option>1.20 Predgovor, spremna beseda
+            <option>1.21 Polemika, diskusijski prispevek, komentar
+            <option>1.22 Intervju
+            <option>1.23 Umetniški sestaveki
+            <option>1.24 Bibliografija, kazalo ipd.
+            <option>1.25 Drugi sestavni deli
+            <option>1.26 Znanstveni sestavek v slovarju, enciklopediji, leksikonu
 
-                <option>3.10 Umetniška poustvariteva
-                <option>3.11 Radijski ali TV dogodek
-                <option>3.12 Razstava
-                <option>3.14 Predavanje na tuji univerzi
-                <option>3.15 Prispevek na konferenci brez natisa
-                <option>3.16 Vabljeno predavanje na konferenci brez natisa
-                <option>3.25 Druga izvedena dela
+            <option>2.01 Znanstvena monografija
+            <option>2.02 Strokovna monografija
+            <option>2.03 Univerzitetni, visokošolski ali višješolski učbenik z recenzijo
+            <option>2.04 Srednješolski, osnovnošolski ali drugi učbenik z recenzijo
+            <option>2.05 Drugo učno gradivo
+            <option>2.06 Slovar, enciklopedija, leksikon, priročnik, atlas, zemljevid
+            <option>2.07 Bibliografija
+            <option>2.08 Doktorska disertacija
+            <option>2.09 Magistrsko delo
+            <option>2.10 Specialistično delo
+            <option>2.11 Diplomsko delo
+            <option>2.12 Končno poročilo o rezultatih raziskav
+            <option>2.13 Elaborat, predštudija, študija
+            <option>2.14 Projektna dokumentacija (idejni projekt, izvedbeni projekt)
+            <option>2.15 Izvedensko mnenje, arbitražna odločba
+            <option>2.16 Umetniško delo
+            <option>2.17 Katalog razstave
+            <option>2.18 Raziskovalni ali dokumentarni film, zvočna ali video publikacija
+            <option>2.19 Radijska ali televizijska oddaja
+            <option>2.20 Zaključena znanstvena zbirka podatkov ali korpus
+            <option>2.21 Programska oprema
+            <option>2.22 Nova sorta
+            <option>2.23 Patentna prijava
+            <option>2.24 Patent
+            <option>2.25 Druge monografije in druga zaključena dela
+            <option>2.26 Temeljni znanstveni slovar ali leksikon
+            <option>2.27 Znanstveni terminološki slovar, enciklopedija ali tematski leksikon
+            <option>2.28 Znanstvenokritična izdaja vira
+            <option>2.29 Model
+            <option>2.30 Zbornik strokovnih ali nerecenziranih znanstvenih prispevkov na konferenci
+            <option>2.31 Zbornik recenziranih znanstvenih prispevkov na mednarodni ali tuji konferenci
+            <option>2.32 Zbornik recenziranih znanstvenih prispevkov na domači konferenci
 
-                <option value="Drugo sekundarno avtorstvo">Drugo sekundarno avtorstvo (urednik, mentor, fotograf ...)
-            </select>
-        </div>
+            <option>3.10 Umetniška poustvariteva
+            <option>3.11 Radijski ali TV dogodek
+            <option>3.12 Razstava
+            <option>3.14 Predavanje na tuji univerzi
+            <option>3.15 Prispevek na konferenci brez natisa
+            <option>3.16 Vabljeno predavanje na konferenci brez natisa
+            <option>3.25 Druga izvedena dela
 
-        <div class="pure-control-group">
-            <label for="prispevki">Za prispevke, ki so objavljeni v zborniku</label>
-            <select id="prispevki">
-                <option>
-                <option>2.30(Zbornik strokovnih in nerecenziranih znanstvenih prispevkov na konferenci)
-                <option>2.31(Zbornik recenziranih znanstevih prispevkov na mednarodni ali tuji konferenci)
-                <option>2.32(Zbornik nerecenziranih znanstevih prispevkov na domači konferenci)
-            </select>
-        </div>
+            <option value="Drugo sekundarno avtorstvo">Drugo sekundarno avtorstvo (urednik, mentor, fotograf ...)
+        </select>
+
+        <p>
+        <label for="prispevki">Za prispevke, ki so objavljeni v zborniku</label><br>
+        <select id="prispevki">
+            <option>
+            <option>2.30(Zbornik strokovnih in nerecenziranih znanstvenih prispevkov na konferenci)
+            <option>2.31(Zbornik recenziranih znanstevih prispevkov na mednarodni ali tuji konferenci)
+            <option>2.32(Zbornik nerecenziranih znanstevih prispevkov na domači konferenci)
+        </select>
         
-        <div class="pure-control-group">
-            <label for="naslov">Naslov dela/dokumenta</label>
-            <textarea id="naslov" class="pure-input-1-2" placeholder="naslov dela"></textarea>
-        </div>
-        <div class="pure-control-group">
-            <label for="avtorji">Priimek, ime: avtorja in soavtorjev</label>
-            <textarea id="avtorji" class="pure-input-1-2" placeholder="avtorji in soavtorji"></textarea>
-        </div>
-        <div class="pure-control-group">
-            <label for="vir">Vir</label>
-            <textarea class="pure-input-1-2" placeholder="vir" id="vir"></textarea>
-        </div>
-        <div class="pure-control-group">
-            <label for="slo">Ključne besede v slovenskem jeziku</label>
-            <textarea id="slo" class="pure-input-1-2" placeholder="ključne besede v slovenskem jeziku"></textarea>
-        </div>
-        <div class="pure-control-group">
-            <label for="angl">Ključne besede v angleškem jeziku</label>
-            <textarea id="angl" class="pure-input-1-2" placeholder="ključne besede v angleškem jeziku"></textarea>
-        </div>
+        <p>
+            <label for="naslov">Naslov dela/dokumenta</label><br>
+            <textarea id="naslov"></textarea>
+        <p>
+            <label for="avtorji">Priimek, ime: avtorja in soavtorjev</label><br>
+            <textarea id="avtorji"></textarea>
+        <p>
+            <label for="vir">Vir</label><br>
+            <textarea id="vir"></textarea>
+        <p>
+            <label for="slo">Ključne besede v slovenskem jeziku</label><br>
+            <textarea id="slo"></textarea>
+        <p>
+            <label for="angl">Ključne besede v angleškem jeziku</label><br>
+            <textarea id="angl"></textarea>
     </fieldset>
 
     <fieldset>
-        <legend><b>Priloge</b></legend>
+        <legend>Priloge</legend>
         <input type="checkbox" id="fotokopija" value="primarni vir (članek oziroma prispevek, zbornik, knjiga ...)">
-	<label for="fotokopija">primarni vir (članek oziroma prispevek, zbornik, knjiga ...)</label>
-	<br>
+        <label for="fotokopija">primarni vir (članek oziroma prispevek, zbornik, knjiga ...)</label>
+        <br>
         <input type="checkbox" id="dokazila" value="dokazila (vabilo, recenzija ...)">
-	<label for="dokazila">dokazila (vabilo, recenzija ...)</label>
+        <label for="dokazila">dokazila (vabilo, recenzija ...)</label>
         </div>
     </fieldset>
 
-    <button onclick="javascript:cobiss()" class="pure-button pure-button-primary">Izpiši PDF</button>
+    <button onclick="javascript:cobiss()">Izpiši PDF</button>
 </form>
