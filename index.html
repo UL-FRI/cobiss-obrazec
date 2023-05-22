@@ -190,6 +190,10 @@ document.querySelector("#savePDF").addEventListener("click", event => {
     var prispevki = document.getElementById("prispevki").value
     var date = "Datum: " + (new Date()).toLocaleDateString("sl");
 
+    var vnos = 'Vnos v Repozitorij UL in v dCOBISS? ' +
+        (document.getElementById('objava').checked ? 'da' : 'ne');
+    var cost = document.getElementById('cost').value;
+
     var priloge = "Priloge: "
     for (const priloga of ["fotokopija", "dokazila", "final"])
         if (document.getElementById(priloga).checked)
@@ -214,6 +218,8 @@ document.querySelector("#savePDF").addEventListener("click", event => {
             'Ključne besede v slovenkem jeziku:\n', slo, '\n\n',
             'Ključne besede v angleškem jeziku:\n', eng, '\n\n',
             'Vir:\n', vir, '\n\n',
+	    vnos, '\n\n',
+            'Stroški objave članka v odprtem dostopu: ' + (cost ? cost + ' €' : ''), '\n\n',
             priloge, '\n\n',
             date
         ]
