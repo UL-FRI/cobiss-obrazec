@@ -188,19 +188,12 @@ document.querySelector("#savePDF").addEventListener("click", event => {
     }
     var tipologija = document.getElementById("tipologija").value
     var prispevki = document.getElementById("prispevki").value
-    var priloge = "Priloga: "
-    var datum = new Date();
-    var date = "Datum: " + datum.getDate() + ". " + (datum.getMonth()+1) + ". " + datum.getFullYear()
+    var date = "Datum: " + (new Date()).toLocaleDateString("sl");
 
-    if (document.getElementById("fotokopija").checked){
-        var fotokopija = document.getElementById("fotokopija").value
-        priloge = priloge + ", " + fotokopija
-    }
-
-    if (document.getElementById("dokazila").checked){
-        var dokazila = document.getElementById("dokazila").value
-        priloge = priloge + ", " + dokazila
-    }
+    var priloge = "Priloge: "
+    for (const priloga of ["fotokopija", "dokazila", "final"])
+        if (document.getElementById(priloga).checked)
+            priloge += "\n" + "- " + document.getElementById(priloga).value
 
     var docDefinition = {
         defaultStyle: { fontSize: 12 },
