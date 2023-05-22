@@ -8,65 +8,6 @@
 <script src='js/vfs_fonts.js'></script>
     
 <script>
-function cobiss() {
-    var knjiznica = "Knjižnica FKKT in FRI\n Večna pot 113, Ljubljana\n FRI: Tel:01/4798005, FKKT: 01/4798006\n\n"
-    var avtor = document.getElementById("avtor").value
-    var predlagatelj = "Predlagatelj dokumenta(avtor/soavtor): "
-    var avtor1 = predlagatelj.concat(avtor)
-    var delo = document.getElementById("naslov").value
-    var avtorji = document.getElementById("avtorji").value
-    var slo = document.getElementById("slo").value
-    var eng = document.getElementById("angl").value
-    var vir = document.getElementById("vir").value
-    if (vir.localeCompare("") != 0) {
-        var vir1=vir.match(/.{1,70}/g);
-        vir = vir1.join(" ")
-    }
-    var tipologija = document.getElementById("tipologija").value
-    var prispevki = document.getElementById("prispevki").value
-    var priloge = "Priloga: "
-    var datum = new Date();
-    var date = "Datum: " + datum.getDate() + ". " + (datum.getMonth()+1) + ". " + datum.getFullYear()
-
-    if (document.getElementById("fotokopija").checked){
-        var fotokopija = document.getElementById("fotokopija").value
-        priloge = priloge + ", " + fotokopija
-    }
-
-    if (document.getElementById("dokazila").checked){
-        var dokazila = document.getElementById("dokazila").value
-        priloge = priloge + ", " + dokazila
-    }
-
-    var docDefinition = {
-        defaultStyle: { fontSize: 12 },
-        content: [ // using a { text: '...' } object lets you set styling properties
-            knjiznica,
-            avtor1,
-            '\n\n',
-            {
-                text: 'Spremni list o dokumentu/delu za vodenje bibliografij raziskovalcev v sistemu COBISS',
-                fontSize: 15,
-                bold: true
-            },
-            '\n\n' ,
-            'Tipologija dokumenta/dela:\n', tipologija, '\n\n' ,
-            'Za prispevke, ki so v celoti objavljeni v zborniku (tipologija 1.06, 1.08):\n', prispevki, '\n\n',
-            'Naslov dela/dokumenta:\n', delo, '\n\n',
-            'Priimek in imena:avtorja in soavtorja:\n', avtorji, '\n\n',
-            'Ključne besede v slovenkem jeziku:\n', slo, '\n\n',
-            'Ključne besede v angleškem jeziku:\n', eng, '\n\n',
-            'Vir:\n', vir, '\n\n',
-            priloge, '\n\n',
-            date
-        ]
-    };
-
-    // download the PDF (temporarily Chrome-only)
-    // pdfMake.createPdf(docDefinition).open();
-    // pdfMake.createPdf(docDefinition).print();
-    pdfMake.createPdf(docDefinition).download('cobiss-obrazec.pdf');
-}
 </script>
 
 <style>
@@ -226,5 +167,68 @@ textarea {
         </div>
     </fieldset>
 
-    <button onclick="javascript:cobiss()">Izpiši PDF</button>
+    <button id="savePDF">Izpiši PDF</button>
 </form>
+
+<script>
+document.querySelector("#savePDF").addEventListener("click", event => {
+    event.preventDefault();
+    var knjiznica = "Knjižnica FKKT in FRI\n Večna pot 113, Ljubljana\n FRI: Tel:01/4798005, FKKT: 01/4798006\n\n"
+    var avtor = document.getElementById("avtor").value
+    var predlagatelj = "Predlagatelj dokumenta(avtor/soavtor): "
+    var avtor1 = predlagatelj.concat(avtor)
+    var delo = document.getElementById("naslov").value
+    var avtorji = document.getElementById("avtorji").value
+    var slo = document.getElementById("slo").value
+    var eng = document.getElementById("angl").value
+    var vir = document.getElementById("vir").value
+    if (vir.localeCompare("") != 0) {
+        var vir1=vir.match(/.{1,70}/g);
+        vir = vir1.join(" ")
+    }
+    var tipologija = document.getElementById("tipologija").value
+    var prispevki = document.getElementById("prispevki").value
+    var priloge = "Priloga: "
+    var datum = new Date();
+    var date = "Datum: " + datum.getDate() + ". " + (datum.getMonth()+1) + ". " + datum.getFullYear()
+
+    if (document.getElementById("fotokopija").checked){
+        var fotokopija = document.getElementById("fotokopija").value
+        priloge = priloge + ", " + fotokopija
+    }
+
+    if (document.getElementById("dokazila").checked){
+        var dokazila = document.getElementById("dokazila").value
+        priloge = priloge + ", " + dokazila
+    }
+
+    var docDefinition = {
+        defaultStyle: { fontSize: 12 },
+        content: [ // using a { text: '...' } object lets you set styling properties
+            knjiznica,
+            avtor1,
+            '\n\n',
+            {
+                text: 'Spremni list o dokumentu/delu za vodenje bibliografij raziskovalcev v sistemu COBISS',
+                fontSize: 15,
+                bold: true
+            },
+            '\n\n' ,
+            'Tipologija dokumenta/dela:\n', tipologija, '\n\n' ,
+            'Za prispevke, ki so v celoti objavljeni v zborniku (tipologija 1.06, 1.08):\n', prispevki, '\n\n',
+            'Naslov dela/dokumenta:\n', delo, '\n\n',
+            'Priimek in imena:avtorja in soavtorja:\n', avtorji, '\n\n',
+            'Ključne besede v slovenkem jeziku:\n', slo, '\n\n',
+            'Ključne besede v angleškem jeziku:\n', eng, '\n\n',
+            'Vir:\n', vir, '\n\n',
+            priloge, '\n\n',
+            date
+        ]
+    };
+
+    // download the PDF (temporarily Chrome-only)
+    // pdfMake.createPdf(docDefinition).open();
+    // pdfMake.createPdf(docDefinition).print();
+    pdfMake.createPdf(docDefinition).download('cobiss-obrazec.pdf');
+});
+</script>
